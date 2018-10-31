@@ -4,16 +4,32 @@ const app = express();
 const fs = require('fs');
 const path = require('path');
 
+app.use(express.static(__dirname+'/views'));
+app.use(express.static(__dirname+'/scripts'));
+
 app.get('/', (req,res) => {
-	// console.log(res);
 	 // res.set('Content-Type', 'text/plain');
 	 // res.status(200);
 
-	 res.sendFile(path.join(__dirname+'/index.html'))
+	 res.sendFile('/index.html');
 
 	 // res.render('./index.html');
 	
 })
+
+app.get('/page1', (req,res)=> {
+	res.sendFile('page1.html');
+});
+
+app.get('/page2', (req,res)=> {
+	res.sendFile('page2.html');
+});
+
+app.get('/download/:file(*)', (req,res)=> {
+	var file = req.params.file;
+	var file_location = path.join(__dirname+'/uploads', file);
+	res.download(file_location, file);
+}) 
 
 app.listen(3000, (err) => {
 	if(err) {

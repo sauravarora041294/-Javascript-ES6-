@@ -1,0 +1,6 @@
+completed:
+CRUD operation for user details and their posts created
+
+to-do:
+integrate it with the UI,
+add user relations 

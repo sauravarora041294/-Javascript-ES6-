@@ -1,3 +1,0 @@
-Prototype property in javascript:
-
-When a function is created in JavaScript, JavaScript engine adds a prototype property to the function. This prototype property is an object (called as prototype object) has a constructor property by default. constructor property points back to the function on which prototype object is a property

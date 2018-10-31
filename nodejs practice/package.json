@@ -1,0 +1,7 @@
+{
+  "name": "node_practice",
+  "version": "",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}

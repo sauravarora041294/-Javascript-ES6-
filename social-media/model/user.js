@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 const PostSchema = new Schema({
 	by: {
 		type: String,
-		required: true
+		required: false
 	},
 	description: {
 		type: String,
@@ -28,7 +28,7 @@ const UserSchema = new Schema({
 	},
 	friendCount: {
 		type: Number,
-		required: true
+		required: false
 	},
 	profession: {
 		type: String,
@@ -38,7 +38,7 @@ const UserSchema = new Schema({
 		type: String,
 		required: true
 	},
-	posts: [ PostSchema ]
+	// posts: [ PostSchema ]
 });
 
 var users = mongoose.model('user', UserSchema);

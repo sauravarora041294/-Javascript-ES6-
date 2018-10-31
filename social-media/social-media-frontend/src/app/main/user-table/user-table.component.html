@@ -1,0 +1,18 @@
+<table>
+  <thead>
+  <tr>
+    <th> First name </th>
+    <th> Age </th>
+    <th> Profession </th>
+    <th> Address </th>
+  </tr>
+  <tr *ngFor="let userData of data; let i of index">
+    <td>{{userData['name']}}</td>
+    <td>{{userData['age']}}</td>
+    <td>{{userData['profession']}}</td>
+    <td>{{userData['address']}}</td>
+    <button type="button" (click)="getUserById(userData['_id'])">Edit</button>
+    <button type="button" (click)="deleteRow(userData['_id'])">Delete</button>
+  </tr>
+  </thead>
+</table>

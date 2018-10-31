@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const Users = require('../model/user');
 router.use(bodyParser.json());
-
+const wrapper = require('../utils/response-template');
 
 router.route('/')
 
@@ -13,22 +13,22 @@ router.route('/')
 	.then((userDetails) => {
 		res.statusCode = 200;
 		res.setHeader('Content-Type', 'application/json');
-		res.json(userDetails)
-	}, (err) => next(err) )
-	.catch((err) => next(err));
+		res.json(wrapper(null, userDetails));
+	}, (err) => res.json(wrapper(err)))
+	.catch((err) => res.json(wrapper(err)));
 })
 
 .post((req,res,next) => {
-	console.log('dish creating..')
+	console.log('user creating..')
 	Users.create(req.body)
 	.then((user) => {
 		console.log('dish created');
 		res.statusCode = 200;
 		res.setHeader('Content-Type', 'application/json');
-		res.json(user);
-	}, (err) => next(err))
-	.catch((err) => next(err))	
-})
+		res.json(wrapper(null, user));
+	},(err) => res.json(wrapper(err)))
+	.catch((err) =>	res.json(wrapper(err)));
+	})
 
 .delete((req,res,next) => {
 	Users.remove({})
@@ -36,16 +36,15 @@ router.route('/')
 		console.log('deleting users..')
 		res.statusCode = 200;
 		res.setHeader('Content-Type', 'application/json');
-		res.json(resp);
-	}, (err) => next(err))
-	.catch((err) => next(err));
+		res.json(wrapper(null,resp));
+	}, (err) => res.json(wrapper(err)))
+	.catch((err) => res.json(wrapper(err)));
 })
 
 .put((req,res,next) => {
 	res.statusCode = 403;
 	res.end('PUT not supported..');
 })
-
 
 
 router.route('/:userId')
@@ -55,9 +54,9 @@ router.route('/:userId')
 	.then((userData) => {
 		res.statusCode = 200;
 		res.setHeader('Content-Type', 'application/json');
-		res.json(userData);
-	}, (err) => next(err))
-}, (err) => next(err))
+		res.json(wrapper(null,userData));
+	}, (err) => res.json(wrapper(err)))
+}, (err) => res.json(wrapper(err)))
 
 .put((req,res,next) => {
 	Users.findByIdAndUpdate(req.params.userId, { $set: req.body }, { new: true })
@@ -83,8 +82,6 @@ router.route('/:userId')
 	}, (err) => next(err))
 .catch((err) => next(err))
 })
-
-
 
 
 router.route('/:userId/posts')

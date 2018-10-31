@@ -1,0 +1,16 @@
+table {
+  width: 100%;
+  border-style: solid;
+  border-width: 1px;
+}
+td {
+  border-style: solid;
+  border-width: 1px;
+  text-align: center;
+  padding: 10px;
+}
+span {
+  border-style: solid;
+  border-width: 1px;
+  text-align: center;
+}

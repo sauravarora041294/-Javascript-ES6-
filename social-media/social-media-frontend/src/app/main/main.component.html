@@ -1,0 +1,77 @@
+<form [formGroup]="fg" *ngIf="fg">
+  <fieldset>
+    <table>
+    <tr>
+      <td><label>First Name</label></td>
+      <td>
+        <input type="text"
+                 formControlName="firstname"
+                 name="firstname"
+                 class="input-field"></td>
+    </tr>
+    <tr>
+      <td>
+        <label>Last Name</label>
+      </td>
+      <td>
+        <input type="text"
+               formControlName="lastname"
+               name="lastname"
+               class="input-field">
+      </td>
+    </tr>
+    <tr>
+        <td>
+          <label>Age</label>
+        </td>
+        <td>
+          <input type="number"
+                 formControlName="age"
+                 name="lastname"
+                 class="input-field">
+        </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Gender</label>
+      </td>
+      <td>
+        <select formControlName="gender">
+          <option name="Female" value="female">Female</option>
+          <option name="Male" value="male">Male</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Profession</label>
+      </td>
+      <td>
+        <select formControlName="profession">
+          <option *ngFor="let opt of professionArr"
+                  value="{{opt.value}}"> {{opt.text}} </option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Address</label>
+      </td>
+      <td>
+        <input type="text"
+               formControlName="address"
+               name="address"
+               class="input-field">
+      </td>
+    </tr>
+    </table>
+    <button type="button" value="Submit" (click)="submit(fg)"> Submit </button>
+    <button type="button" value="Update" (click)="submit(fg)"> Update </button>
+  </fieldset>
+</form>
+
+<div>
+  <app-user-table [data]="userData"
+                  (getUserData) = updateFormData($event)
+                  (getUser)="getUsers($event)"></app-user-table>
+</div>
