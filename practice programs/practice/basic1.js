@@ -4,3 +4,4 @@ function showDate(){
 	console.log(days[day.getDay()-1]);
 }
 showDate();
+

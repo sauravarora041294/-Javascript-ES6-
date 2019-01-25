@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<title>CSS selectors practice</title>
+		<style>
+			[href^="https://"]{
+				color: red;
+			}
+			[href$=".jpg"]{
+				color: green	;
+			}
+			[href*="#"]{
+				color: black;
+			}
+			div>span>h4{
+				color: blue;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div><a href="https://www.google.com"> google</a></div>
+		<div><a href="file.jpg"> google</a></div>
+		<div><a href="#"> google</a></div>
+		<div><a href="photo.jpg"> google</a></div>
+		<div><a href="https://www.google.com"> google</a></div>
+		<div><p> paragraph </p></div>
+		<div>
+			<span>Hello There...<a>Hello world</a>
+				<h4>Hey there</h4>
+			</span>
+		</div>
+		<div>
+			<p> Hello world</p>
+		</div>
+	</body>
+</html>
